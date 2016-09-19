@@ -11,26 +11,27 @@
 	        Site Ace
 	      </a>
         </div>
-        <ul class="nav navbar-nav">
-            <li>
+        <p class="navbar-text">
             {{> loginButtons}}
-            </li>
-        </ul>
-
+        </p>
 	  </div>
 	</nav>
 
 	<div class="container">
-		{{> website_form}}
+        {{#if currentUser}}
+    		{{> website_form}}
+        {{/if}}
 		{{> website_list}}
 	</div>
 </body>
 
 
 <template name="website_form">
-	<a class="btn btn-default js-toggle-website-form" href="#">
-  		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-	</a>
+    <div class="alert alert-success">Add your favorite website!
+    	<a class="btn btn-default js-toggle-website-form" href="#">
+      		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    	</a>
+    </div>
 	<div id="website_form" class="hidden_div">
 		<form class="js-save-website-form">
 		  <div class="form-group">
