@@ -69,18 +69,14 @@
 		{{description}}
 	</p>
     <p>Web site was added on {{createdOn}}</p>
-    <p class="label label-success">Up votes:
-        <span class="badge">{{upvotes}}</span>
-    </p>
-    <p  class="label label-warning">Down votes:
-        <span class="badge">{{downvotes}}</span>
-    </p>
-	<a href="#" class="btn btn-default js-upvote">
-		<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+	<a href="#" class="btn btn-success js-upvote">
+        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
 	</a>
-	<a href="#" class="btn btn-default js-downvote">
-		<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+    <span class="badge">{{upvotes}}</span> up
+	<a href="#" class="btn btn-danger js-downvote">
+        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
 	</a>
+    <span class="badge">{{downvotes}}</span> down
 	<!-- you will be putting your up and down vote buttons in here! -->
 </li>
 </template>
