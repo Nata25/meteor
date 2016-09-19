@@ -71,8 +71,23 @@ if (Meteor.isClient) {
 			var url = event.target.url.value;
 			console.log("The url they entered is: "+url);
 
-			//  put your website saving code in here!
+			var title = event.target.title.value;
+			console.log("The title is: "+title);
+			var description = event.target.description.value;
+			console.log("What the site is about: "+description);
 
+			if (Meteor.user()) {
+				Websites.insert(
+					{
+						title: title,
+						url: url,
+						description: description,
+						createdOn:new Date(),
+					    upvotes:0,
+					    downvotes:0
+					}
+				);
+			}
 			return false;// stop the form submit from reloading the page
 
 		}
