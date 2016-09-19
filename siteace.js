@@ -24,16 +24,15 @@ if (Meteor.isClient) {
 			// (this is the data context for the template)
 			var website_id = this._id;
 			console.log("Up voting website with id "+website_id);
-			// put the code in here to add a vote to a website!
+			// add a vote to a website!
 			var rating = this.rating;
-			if (!rating) {
-				rating = 1;
-			}
-			else {
-				rating++;
-			}
-			this.rating = rating;
+			if (!rating) rating = 1;
+			else rating++;
 			console.log("The website has the rating", rating);
+
+			Websites.update({_id:website_id},
+						  {$set: {rating:rating}});
+
 			return false;// prevent the button from reloading the page
 		},
 		"click .js-downvote":function(event){
@@ -43,15 +42,14 @@ if (Meteor.isClient) {
 			var website_id = this._id;
 			console.log("Down voting website with id "+website_id);
 
-			// put the code in here to remove a vote from a website!
+			// remove a vote from a website!
 			var rating = this.rating;
-			if (!rating) {
-				rating = -1;
-			}
-			else {
-				rating--;
-			}
-			this.rating = rating;
+			if (!rating) rating = -1;
+			else rating--;
+
+			Websites.update({_id:website_id},
+						  {$set: {rating:rating}});
+
 			console.log("The website has the rating", rating);
 			return false;// prevent the button from reloading the page
 		}
