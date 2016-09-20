@@ -42,7 +42,7 @@ if (Meteor.isClient) {
 		}
 	});
 
-	Template.website_page.helpers({
+	Template.addDate.helpers({
 		formattedDate:function() {
 			var monthNames = [
 		  "January", "February", "March",
@@ -50,7 +50,7 @@ if (Meteor.isClient) {
 		  "August", "September", "October",
 		  "November", "December"
 		];
-			var createdOn = new Date();
+			var createdOn = this.createdOn;
 			var monthIndex = createdOn.getMonth();
 			return monthNames[monthIndex] + " " + createdOn.getDate() + ", " + createdOn.getFullYear();
 		}
@@ -60,7 +60,7 @@ if (Meteor.isClient) {
 	// template events
 	/////
 
-	Template.website_item.events({
+	Template.votes.events({
 		"click .js-upvote":function(event){
 			// example of how you can access the id for the website in the database
 			// (this is the data context for the template)
