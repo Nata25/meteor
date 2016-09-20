@@ -13,6 +13,20 @@ if (Meteor.isClient) {
 		}
 	});
 
+	Template.website_item.helpers({
+		formattedDate:function() {
+			var monthNames = [
+		  "January", "February", "March",
+		  "April", "May", "June", "July",
+		  "August", "September", "October",
+		  "November", "December"
+		];
+			var createdOn = new Date();
+			var monthIndex = createdOn.getMonth();
+			return monthNames[monthIndex] + " " + createdOn.getDate() + ", " + createdOn.getFullYear();
+		}
+	});
+
 	/////
 	// template events
 	/////
