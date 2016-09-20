@@ -32,6 +32,24 @@
       		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     	</a>
     </div>
+
+    <div class="modal fade" id="site_saved">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title">
+            </div>
+          </div>
+          <div class="modal-body">
+            Your web site was successfully saved!
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" data-dismiss="modal">OK!</button>
+          </div>
+          </div>
+        </div>
+    </div>
+
 	<div id="website_form" class="hidden_div">
 		<form class="js-save-website-form">
 		  <div class="form-group">
@@ -69,16 +87,18 @@
 		{{description}}
 	</p>
     <p>Web site was added on {{createdOn}}</p>
-	<a href="#" class="btn btn-default js-upvote">
+	<span class="label label-success">up</span>
+    <a href="#" class="btn btn-default js-upvote">
         <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
 	</a>
     <span class="badge">{{upvotes}}</span>
-    <span class="label label-success">up</span>
-	<a href="#" class="btn btn-default js-downvote">
+
+    <span class="label label-warning">down</span>
+    <a href="#" class="btn btn-default js-downvote">
         <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
 	</a>
     <span class="badge">{{downvotes}}</span>
-    <span class="label label-warning">down</span>
+
 	<!-- you will be putting your up and down vote buttons in here! -->
 </li>
 </template>

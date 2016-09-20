@@ -87,6 +87,8 @@ if (Meteor.isClient) {
 					    downvotes:0
 					}
 				);
+				$("#site_saved").modal("show");
+
 			}
 			return false;// stop the form submit from reloading the page
 
