@@ -137,6 +137,13 @@ if (Meteor.isClient) {
 
 		}
 	});
+
+	Template.comment.events({
+		"submit .js-comment-form":function(event) {
+			console.log("submitting comment");
+			return false;
+		}
+	});
 }
 
 
