@@ -31,6 +31,13 @@ if (Meteor.isClient) {
 	});
 
 
+	/// accounts config
+
+	Accounts.ui.config({
+	passwordSignupFields: "USERNAME_AND_EMAIL"
+	});
+
+
 	/////
 	// template helpers
 	/////
@@ -140,7 +147,13 @@ if (Meteor.isClient) {
 
 	Template.comment.events({
 		"submit .js-comment-form":function(event) {
-			console.log("submitting comment");
+
+			// var username = Meteor.user().emails[0].address;
+			var username = Meteor.user().username;
+			var comment = event.target.comment.value;
+			event.target.comment.value = '';
+			console.log("submitting comment by", username);
+			console.log("here's the comment:", comment);
 			return false;
 		}
 	});
