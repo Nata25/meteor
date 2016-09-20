@@ -2,6 +2,15 @@
 .hidden_div{
 	display:none;
 }
-li {
-	margin-top: 40px;
+
+.js-toggle-website-form {
+	margin: 7px;
+}
+
+.navbar-right {
+	margin-right: 30px;
+}
+
+ol > li {
+	margin-top: 50px;
 }

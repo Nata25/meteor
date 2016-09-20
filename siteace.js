@@ -73,16 +73,11 @@ if (Meteor.isClient) {
 			// example of how you can access the id for the website in the database
 			// (this is the data context for the template)
 			var website_id = this._id;
-			console.log("Up voting website with id "+website_id);
-			// add a vote to a website!
+			// add a vote to a website
 			upvotes = this.upvotes;
 			downvotes = this.downvotes;
 			upvotes++;
-			console.log("The website has", upvotes, "upvotes");
-
 			var rating = upvotes - downvotes;
-
-			console.log("The rating is ", rating);
 
 			Websites.update({_id:website_id},
 						  {$set: {rating: rating,
@@ -96,8 +91,7 @@ if (Meteor.isClient) {
 			// example of how you can access the id for the website in the database
 			// (this is the data context for the template)
 			var website_id = this._id;
-			console.log("Down voting website with id "+website_id);
-			// remove a vote from a website!
+			// remove a vote from a website
 			upvotes = this.upvotes;
 			downvotes = this.downvotes;
 			downvotes++;
@@ -106,8 +100,6 @@ if (Meteor.isClient) {
 						  {$set: {rating:rating,
 						  		  downvotes:downvotes}
 					  	  });
-
-			console.log("The website has the rating", rating);
 			return false;// prevent the button from reloading the page
 		}
 	})
@@ -171,16 +163,20 @@ if (Meteor.isClient) {
 			var username = Meteor.user().username;
 			var comment = event.target.comment.value;
 			var website_id = this._id;
+
+			// post comment if the user is logged in and has put some text:
+			if (Meteor.user() && /\w/.test(comment)) {
 			event.target.comment.value = '';
 
-			Comments.insert(
-				{
-				website_id: website_id,
-				user: username,
-				text: comment,
-				posted: new Date(2016, 8, 20)
-				}
-			);
+				Comments.insert(
+					{
+					website_id: website_id,
+					user: username,
+					text: comment,
+					posted: new Date(2016, 8, 20)
+					}
+				);
+			}
 
 			return false;
 		}
