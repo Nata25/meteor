@@ -115,19 +115,32 @@ if (Meteor.isClient) {
 	Template.website_form.events({
 		"click .js-toggle-website-form":function(event){
 			$("#website_form").toggle('slow');
+			$("#invalid").hide();
 		},
 		"submit .js-save-website-form":function(event){
+			var valid = true;
 
-			// here is an example of how to get the url out of the form:
 			var url = event.target.url.value;
-			console.log("The url they entered is: "+url);
+			var pattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+			if (!url || !pattern.test(url)) {
+				event.target.url.value = '';
+				event.target.url.placeholder = "Please, type a valid url address!";
+				valid = false;
+			}
 
 			var title = event.target.title.value;
-			console.log("The title is: "+title);
-			var description = event.target.description.value;
-			console.log("What the site is about: "+description);
+			if (!title) {
+				event.target.title.placeholder = "Please, type website title!";
+				valid = false;
+			}
 
-			if (Meteor.user()) {
+			var description = event.target.description.value;
+			if (!description) {
+				event.target.description.placeholder = "Please, type website description!";
+				valid = false;
+			}
+
+			if (Meteor.user() && valid) {
 				Websites.insert(
 					{
 						title: title,
@@ -138,9 +151,14 @@ if (Meteor.isClient) {
 					    downvotes:0
 					}
 				);
-				$("#site_saved").modal("show");
 
+				$("#site_saved").modal("show");
+				$("#invalid").hide();
 			}
+			else {
+				$("#invalid").show();
+			}
+
 			return false;// stop the form submit from reloading the page
 
 		}

@@ -79,6 +79,8 @@
 		    <input type="text" class="form-control" id="description" placeholder="I found this site really useful for ...">
 		  </div>
 
+          <div class="alert alert-danger" id="invalid">Seems like you didn't fill out all fields</div>
+
 		  <button type="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>
@@ -97,7 +99,7 @@
 
 <!-- template that displays individual website entries -->
 <template name="website_item">
-	<a href="{{url}}">{{title}}</a>
+	<a href="{{url}}"><h3>{{title}}</h3></a>
 	<p>
 		{{description}}
 	</p>
