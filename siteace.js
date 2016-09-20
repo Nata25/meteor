@@ -115,6 +115,7 @@ if (Meteor.isClient) {
 	Template.website_form.events({
 		"click .js-toggle-website-form":function(event){
 			$("#website_form").toggle('slow');
+			$("#toggle-btn").toggleClass("glyphicon-minus");
 			$("#invalid").hide();
 		},
 		"submit .js-save-website-form":function(event){
