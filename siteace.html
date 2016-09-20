@@ -136,7 +136,11 @@
         </p>
         {{>addDate}}
         {{>votes}}
-        {{>comment}}
+
+        <!-- only registered users can leave comments -->
+        {{#if currentUser}}
+            {{>comment}}
+        {{/if}}
     </div>
 </template>
 
