@@ -42,7 +42,7 @@ if (Meteor.isClient) {
 		}
 	});
 
-	Template.website_item.helpers({
+	Template.website_page.helpers({
 		formattedDate:function() {
 			var monthNames = [
 		  "January", "February", "March",
