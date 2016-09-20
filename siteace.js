@@ -1,7 +1,8 @@
 Websites = new Mongo.Collection("websites");
+Comments = new Mongo.Collection("comments");
+
 
 if (Meteor.isClient) {
-
 
 	/// routing
 
@@ -49,7 +50,7 @@ if (Meteor.isClient) {
 		}
 	});
 
-	Template.addDate.helpers({
+	Template.body.helpers({
 		formattedDate:function() {
 			var monthNames = [
 		  "January", "February", "March",
@@ -147,16 +148,42 @@ if (Meteor.isClient) {
 
 	Template.comment.events({
 		"submit .js-comment-form":function(event) {
-
 			// var username = Meteor.user().emails[0].address;
 			var username = Meteor.user().username;
 			var comment = event.target.comment.value;
+			var website_id = this._id;
 			event.target.comment.value = '';
 			console.log("submitting comment by", username);
 			console.log("here's the comment:", comment);
+			console.log("website's id is", website_id);
+
+			Comments.insert(
+				{
+				website_id: website_id,
+				user: username,
+				text: comment,
+				added: new Date()
+				}
+			);
+			console.log("Total number of comments in database:", Comments.find().count());
+			var lastComment = Comments.findOne({user: "nata"});
+			console.log("last comment: ", lastComment);
+			console.log("last comment was left by ", lastComment.user);
+
 			return false;
 		}
 	});
+
+	Template.website_comments.helpers({
+		display_comments:function(){
+			console.log("inside display_comments");
+			if (Comments.find().count() != 0) {
+				console.log("hello!!!");
+				return Comments.find({}, {sort:{added:-1}});
+			}
+		}
+	});
+
 }
 
 
