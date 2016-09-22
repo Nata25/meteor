@@ -40,7 +40,7 @@
 	// helper function that returns all available websites
 	Template.website_list.helpers({
 		websites:function(){
-			return Websites.find({}, {sort:{rating:-1, createdOn:-1}});
+			return Websites.find({}, {sort:{upvotes:-1, createdOn:-1}});
 		}
 	});
 
@@ -71,11 +71,9 @@
 			upvotes = this.upvotes;
 			downvotes = this.downvotes;
 			upvotes++;
-			var rating = upvotes - downvotes;
 
 			Websites.update({_id:website_id},
-						  {$set: {rating: rating,
-							      upvotes: upvotes}
+						  {$set: {upvotes: upvotes}
 						  });
 
 			return false;// prevent the button from reloading the page
@@ -89,10 +87,9 @@
 			upvotes = this.upvotes;
 			downvotes = this.downvotes;
 			downvotes++;
-			var rating = upvotes - downvotes;
+
 			Websites.update({_id:website_id},
-						  {$set: {rating:rating,
-						  		  downvotes:downvotes}
+						  {$set: {downvotes:downvotes}
 					  	  });
 			return false;// prevent the button from reloading the page
 		}
