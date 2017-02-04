@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Web Sources Rating
 
 ## Overview
