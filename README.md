@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Web Sources Rating
 
 ## Overview
@@ -11,7 +10,15 @@ A skeleton for a simple one-page [Meteor.js](https://www.meteor.com/) app for co
 - users can register and login/out
 - registered users can add new sources (title, URL, description), which by default gets 0 rating
 - on clicking "Learn more" button details page is rendered where user can also vote pro/contra; results are preserved
-- on page reload and even project restart, the list of sources and number of votes are preserved (it is needed to manually clean up a database to restart app from scratch).
+- on page reload and even project restart, the list of sources and number of votes are preserved (it is needed to manually clean up a MongoDB database to restart app from scratch)
+- one-page approach is implemented via Routing.
+
+## Technologies used:
+
+- Meteor.js
+- MongoDB
+- Bootstrap
+- iron:router
 
 ------
 
