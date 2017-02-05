@@ -1,14 +1,16 @@
 # Web Sources Rating
 
+Simple one-page [Meteor.js](https://www.meteor.com/) app.
+
 ## Overview
 
-A skeleton for a simple one-page [Meteor.js](https://www.meteor.com/) app which displays and rate user's favorite web sites.
+A skeleton for an app  which displays and rate user's favorite web sites.
 
 ## Features
 1. initially, 4 sources are displayed
 2. all users can vote up or down displayed sources; the sources are dynamically arranged according to the rating (the highest rated are on the top)
 3. users can register and login/out
-4. registered users can add new sources (title, URL, description), which by default gets 0 rating
+4. registered users can add new sources (title, URL, description) which by default get 0 rating
 5. on clicking "Learn more" button details page is rendered where user can also vote pro/contra; results are preserved
 6. on page reload and even project restart, the list of sources and number of votes are preserved (it is needed to manually clean up a MongoDB database to restart app from scratch)
 7. one-page approach is implemented via Routing.
